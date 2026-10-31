@@ -27,7 +27,7 @@ const projects = [
     title: 'OutdoorRent',
     category: 'WEB APPLICATION',
     description:
-      'Website penyewaan alat outdoor dengan katalog perlengkapan untuk memudahkan pengguna melihat dan memilih alat yang dibutuhkan.',
+      'A web-based platform designed to simplify the process of browsing and renting outdoor equipment through an organized product catalog.',
     tags: ['Laravel', 'PHP', 'MySQL'],
     icon: Laptop,
   },
@@ -36,7 +36,7 @@ const projects = [
     title: 'Data Analysis',
     category: 'DATA ANALYTICS',
     description:
-      'Proyek pembelajaran pengolahan data menggunakan workflow untuk memahami karakteristik data dan mendapatkan informasi.',
+      'A data analysis project focused on exploring datasets, identifying patterns, and generating meaningful insights using KNIME.',
     tags: ['KNIME', 'Data Analysis'],
     icon: Monitor,
   },
@@ -45,7 +45,7 @@ const projects = [
     title: 'Database Security',
     category: 'DATABASE SYSTEM',
     description:
-      'Proyek pembelajaran keamanan basis data yang membahas pengaturan hak akses dan perlindungan data sensitif.',
+      'A database security project focused on access control, data protection, and implementing security policies using SQL.',
     tags: ['SQL', 'Database', 'Security'],
     icon: Code2,
   },
@@ -282,13 +282,12 @@ function App() {
               </motion.h1>
 
               <h2 className="mt-6 text-xl font-semibold text-slate-300 sm:text-2xl">
-                Aspiring <span className="text-blue-300">Web Developer</span>
+                Aspiring <span className="text-blue-300">System Analyst & Web Developer</span>
               </h2>
 
               <p className="mt-5 max-w-xl text-sm leading-8 text-slate-400 sm:text-base">
-                Mahasiswa Sistem Informasi yang tertarik pada pengembangan
-                website, teknologi, dan pengolahan data. Saya terus belajar
-                membangun solusi digital melalui proyek dan pengalaman baru.
+                I am an Information Systems student with a strong interest in web development, digital technology, and data analysis. I continuously develop my technical and analytical skills through various projects, learning experiences, and new challenges to create innovative and meaningful digital solutions.
+
               </p>
 
               <div className="mt-9 flex flex-wrap gap-4">
@@ -480,7 +479,7 @@ function App() {
                   A Little Bit <span className="hero-gradient">About Me</span>
                 </>
               }
-              description="Mengenal lebih dekat minat, perjalanan, dan hal yang sedang saya pelajari."
+              description="Get to know my background, interests, and the journey I'm currently building."
             />
 
             <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
@@ -498,17 +497,14 @@ function App() {
                 </div>
 
                 <p className="text-sm leading-8 text-slate-400 sm:text-base">
-                  Halo! Saya Dean Septa Ramadhan, mahasiswa Sistem Informasi
-                  yang sedang mengembangkan kemampuan di bidang teknologi
-                  informasi. Saya tertarik memahami bagaimana website, basis
-                  data, dan analisis data dapat membantu menyelesaikan masalah
-                  sehari-hari.
+                  My interest in technology drives me to continuously explore how digital solutions can improve business processes and solve real-world problems.
                 </p>
 
                 <p className="mt-4 text-sm leading-8 text-slate-400 sm:text-base">
-                  Saat ini saya terus belajar melalui tugas kuliah dan proyek
-                  mandiri. Saya percaya kemampuan yang baik dibangun melalui
-                  konsistensi, rasa ingin tahu, dan kemauan mencoba hal baru.
+                  As an Information Systems student, I am developing my knowledge in system analysis, database management, and web development. I also gained practical experience during my internship at the Bogor Regency Regional Secretariat, where I was involved in computer-based data entry and administrative activities.
+
+                  I am committed to continuously improving my technical and analytical skills, with the goal of contributing to meaningful technology projects and growing as a professional in the IT industry.
+
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-2">
@@ -559,7 +555,7 @@ function App() {
                     Sekretariat Daerah Kabupaten Bogor
                   </p>
                   <p className="mt-4 text-xs leading-6 text-slate-500">
-                    Membantu proses input data menggunakan komputer saat PKL di SMA.
+                    Membantu proses input data menggunakan komputer saat PKL di SMK.
                   </p>
                 </div>
               </div>
@@ -910,139 +906,139 @@ function App() {
                 </div>
 
 
-    <div className="space-y-4">
-                        <a
-                          href={`mailto:${email}?subject=${encodeURIComponent('Hello Dean')}`}
-                          className="group flex items-center justify-between rounded-xl bg-blue-600 px-5 py-4 font-semibold text-white transition hover:bg-blue-500"
-                        >
-                          <span className="flex items-center gap-3 text-sm">
-                            <Send size={18} /> Send Me an Email
-                          </span>
+                <div className="space-y-4">
+                  <a
+                    href={`mailto:${email}?subject=${encodeURIComponent('Hello Dean')}`}
+                    className="group flex items-center justify-between rounded-xl bg-blue-600 px-5 py-4 font-semibold text-white transition hover:bg-blue-500"
+                  >
+                    <span className="flex items-center gap-3 text-sm">
+                      <Send size={18} /> Send Me an Email
+                    </span>
 
-                          <ArrowUpRight
-                            size={18}
-                            className="transition group-hover:-translate-y-1 group-hover:translate-x-1"
-                          />
-                        </a>
+                    <ArrowUpRight
+                      size={18}
+                      className="transition group-hover:-translate-y-1 group-hover:translate-x-1"
+                    />
+                  </a>
 
-                        <a
-                          href="#projects"
-                          className="flex items-center justify-between rounded-xl border border-slate-700 bg-white/[0.02] px-5 py-4 text-sm font-medium text-slate-300 transition hover:border-blue-400/30 hover:text-blue-300"
-                        >
-                          Explore My Projects <ArrowRight size={17} />
-                        </a>
+                  <a
+                    href="#projects"
+                    className="flex items-center justify-between rounded-xl border border-slate-700 bg-white/[0.02] px-5 py-4 text-sm font-medium text-slate-300 transition hover:border-blue-400/30 hover:text-blue-300"
+                  >
+                    Explore My Projects <ArrowRight size={17} />
+                  </a>
 
-                        <div className="flex items-center gap-3 pt-3 text-xs text-slate-500">
-                          <span className="h-px flex-1 bg-white/[0.08]" />
-                          OPEN TO LEARNING & COLLABORATION
-                          <span className="h-px flex-1 bg-white/[0.08]" />
-                        </div>
-                      </div>
-                    </motion.div>
+                  <div className="flex items-center gap-3 pt-3 text-xs text-slate-500">
+                    <span className="h-px flex-1 bg-white/[0.08]" />
+                    OPEN TO LEARNING & COLLABORATION
+                    <span className="h-px flex-1 bg-white/[0.08]" />
                   </div>
                 </div>
-              </section>
-            </main>
-
-            {/* Footer */}
-            <footer className="relative z-10 border-t border-white/[0.07]">
-              <div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
-
-                <a href="#home" className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-blue-400/20 bg-blue-500/10 text-xs font-black text-blue-300">
-                    DS
-                  </div>
-
-                  <div>
-                    <p className="text-sm font-bold text-white">
-                      DEAN<span className="text-blue-400">.DEV</span>
-                    </p>
-                    <p className="mt-1 text-[10px] text-slate-500">
-                      Personal Portfolio
-                    </p>
-                  </div>
-                </a>
-
-                <p className="text-xs text-slate-500">
-                  © {new Date().getFullYear()} Dean Septa Ramadhan. Built with React.
-                </p>
-
-                <div className="flex items-center gap-3">
-
-                  {/* GitHub */}
-                  <a
-                    href="https://dean-portfolio-psi.vercel.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                    title="GitHub"
-                    className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:-translate-y-1 hover:border-blue-400/30 hover:text-blue-300"
-                  >
-                    <Code2 size={17} />
-                  </a>
-
-                  {/* LinkedIn */}
-                  <a
-                    href="https://www.linkedin.com/in/dean-septa-ramadhan-b5673a446/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    title="LinkedIn"
-                    className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:-translate-y-1 hover:border-blue-400/30 hover:text-blue-300"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="17"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14ZM8.34 10H5.67v8h2.67v-8Zm-.02-3.1a1.55 1.55 0 1 0-3.1 0 1.55 1.55 0 0 0 3.1 0ZM18.33 13.4c0-2.4-1.28-3.52-2.98-3.52a2.58 2.58 0 0 0-2.32 1.28V10h-2.67v8h2.67v-4.1c0-1.08.2-2.13 1.55-2.13 1.33 0 1.35 1.24 1.35 2.2V18h2.67l-.27-4.6Z" />
-                    </svg>
-                  </a>
-
-                  {/* Instagram */}
-                  <a
-                    href="https://www.instagram.com/deanseptaramadhan/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                    title="Instagram"
-                    className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:-translate-y-1 hover:border-pink-400/30 hover:text-pink-300"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="17"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <rect x="3" y="3" width="18" height="18" rx="5" />
-                      <circle cx="12" cy="12" r="4" />
-                      <circle cx="18" cy="6" r="0.8" fill="currentColor" />
-                    </svg>
-                  </a>
-
-                  {/* Email */}
-                  <a
-                    href={`mailto:${email}`}
-                    aria-label="Email"
-                    title="Email"
-                    className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:-translate-y-1 hover:border-blue-400/30 hover:text-blue-300"
-                  >
-                    <Mail size={17} />
-                  </a>
-
-                </div>
-              </div>
-            </footer>
+              </motion.div>
+            </div>
           </div>
-          )
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-white/[0.07]">
+        <div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
+
+          <a href="#home" className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-blue-400/20 bg-blue-500/10 text-xs font-black text-blue-300">
+              DS
+            </div>
+
+            <div>
+              <p className="text-sm font-bold text-white">
+                DEAN<span className="text-blue-400">.DEV</span>
+              </p>
+              <p className="mt-1 text-[10px] text-slate-500">
+                Personal Portfolio
+              </p>
+            </div>
+          </a>
+
+          <p className="text-xs text-slate-500">
+            © {new Date().getFullYear()} Dean Septa Ramadhan. Built with React.
+          </p>
+
+          <div className="flex items-center gap-3">
+
+            {/* GitHub */}
+            <a
+              href="https://dean-portfolio-psi.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              title="GitHub"
+              className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:-translate-y-1 hover:border-blue-400/30 hover:text-blue-300"
+            >
+              <Code2 size={17} />
+            </a>
+
+            {/* LinkedIn */}
+            <a
+              href="https://www.linkedin.com/in/dean-septa-ramadhan-b5673a446/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              title="LinkedIn"
+              className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:-translate-y-1 hover:border-blue-400/30 hover:text-blue-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14ZM8.34 10H5.67v8h2.67v-8Zm-.02-3.1a1.55 1.55 0 1 0-3.1 0 1.55 1.55 0 0 0 3.1 0ZM18.33 13.4c0-2.4-1.28-3.52-2.98-3.52a2.58 2.58 0 0 0-2.32 1.28V10h-2.67v8h2.67v-4.1c0-1.08.2-2.13 1.55-2.13 1.33 0 1.35 1.24 1.35 2.2V18h2.67l-.27-4.6Z" />
+              </svg>
+            </a>
+
+            {/* Instagram */}
+            <a
+              href="https://www.instagram.com/deanseptaramadhan/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              title="Instagram"
+              className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:-translate-y-1 hover:border-pink-400/30 hover:text-pink-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="18" cy="6" r="0.8" fill="currentColor" />
+              </svg>
+            </a>
+
+            {/* Email */}
+            <a
+              href={`mailto:${email}`}
+              aria-label="Email"
+              title="Email"
+              className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:-translate-y-1 hover:border-blue-400/30 hover:text-blue-300"
+            >
+              <Mail size={17} />
+            </a>
+
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
 }
 
-          export default App
+export default App
