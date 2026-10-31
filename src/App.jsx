@@ -118,7 +118,7 @@ function App() {
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 28, mass: 0.2 })
 
   // Ganti dengan alamat email kamu yang benar.
-  const email = 'deanseptaramadhan@gmail.com'
+  const email = 'deansptaa@gmail.com'
 
   const navigation = [
     { label: 'Home', href: '#home' },
