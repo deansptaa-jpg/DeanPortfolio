@@ -6,6 +6,7 @@ import {
   ArrowDown,
   ArrowRight,
   ArrowUpRight,
+  MessageCircle,
   Award,
   BriefcaseBusiness,
   Check,
@@ -915,6 +916,22 @@ function App() {
                   >
                     <span className="flex items-center gap-3 text-sm">
                       <Send size={18} /> Send Me an Email
+                    </span>
+
+                    <ArrowUpRight
+                      size={18}
+                      className="transition group-hover:-translate-y-1 group-hover:translate-x-1"
+                    />
+                  </a>
+
+                  <a
+                    href="https://wa.me/62895379062725?text=Hello%20Dean%2C%20I%20visited%20your%20portfolio."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between rounded-xl bg-green-600 px-5 py-4 font-semibold text-white transition hover:bg-green-500"
+                  >
+                    <span className="flex items-center gap-3 text-sm">
+                      <MessageCircle size={18} /> Contact Me on WhatsApp
                     </span>
 
                     <ArrowUpRight
