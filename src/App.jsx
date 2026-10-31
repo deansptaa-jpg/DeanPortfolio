@@ -940,16 +940,9 @@ function App() {
                     />
                   </a>
 
-                  <a
-                    href="#projects"
-                    className="flex items-center justify-between rounded-xl border border-slate-700 bg-white/[0.02] px-5 py-4 text-sm font-medium text-slate-300 transition hover:border-blue-400/30 hover:text-blue-300"
-                  >
-                    Explore My Projects <ArrowRight size={17} />
-                  </a>
-
                   <div className="flex items-center gap-3 pt-3 text-xs text-slate-500">
                     <span className="h-px flex-1 bg-white/[0.08]" />
-                    OPEN TO LEARNING & COLLABORATION
+                    READY TO GROW & CONTRIBUTE
                     <span className="h-px flex-1 bg-white/[0.08]" />
                   </div>
                 </div>
