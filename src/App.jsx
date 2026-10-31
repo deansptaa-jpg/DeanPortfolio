@@ -908,7 +908,9 @@ function App() {
 
                 <div className="space-y-4">
                   <a
-                    href={`mailto:${email}?subject=${encodeURIComponent('Hello Dean')}`}
+                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent('Hello Dean')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group flex items-center justify-between rounded-xl bg-blue-600 px-5 py-4 font-semibold text-white transition hover:bg-blue-500"
                   >
                     <span className="flex items-center gap-3 text-sm">
