@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import Particles3D from "./components/Particles3D";
 import { motion, useMotionValue, useSpring, useScroll } from 'framer-motion'
 
 import {
@@ -153,6 +153,9 @@ function App() {
         className="pointer-events-none fixed z-[2] hidden h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/[0.055] blur-[75px] md:block"
         style={{ left: pointerX, top: pointerY }}
       />
+      {/* 3D Depth Particles */}
+      <Particles3D />
+
       {/* Background */}
       <div className="grid-background pointer-events-none fixed inset-0" />
       <div className="ambient-glow ambient-glow-one pointer-events-none fixed" />
