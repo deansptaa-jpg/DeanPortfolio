@@ -1,5 +1,7 @@
 import { useState } from 'react'
+
 import { motion, useMotionValue, useSpring, useScroll } from 'framer-motion'
+
 import {
   ArrowDown,
   ArrowRight,
@@ -425,10 +427,10 @@ function App() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-white">
-                      
+
                     </p>
                     <p className="mt-1 text-[10px] text-slate-500">
-                      
+
                     </p>
                   </div>
                 </motion.div>
@@ -864,96 +866,183 @@ function App() {
                       <span className="text-xs text-slate-500">Copy</span>
                     )}
                   </button>
-                </div>
 
-                <div className="space-y-4">
-                  <a
-                    href={`mailto:${email}?subject=${encodeURIComponent('Hello Dean')}`}
-                    className="group flex items-center justify-between rounded-xl bg-blue-600 px-5 py-4 font-semibold text-white transition hover:bg-blue-500"
-                  >
-                    <span className="flex items-center gap-3 text-sm">
-                      <Send size={18} /> Send Me an Email
-                    </span>
-                    <ArrowUpRight
-                      size={18}
-                      className="transition group-hover:-translate-y-1 group-hover:translate-x-1"
-                    />
-                  </a>
+                  {/* Tombol LinkedIn dan Instagram */}
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <a
+                      href="https://www.linkedin.com/in/dean-septa-ramadhan-b5673a446/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-xl border border-blue-400/30 bg-blue-500/10 px-4 py-3 text-sm font-medium text-blue-300 transition hover:-translate-y-1 hover:border-blue-400 hover:bg-blue-500/20 hover:text-white"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="17"
+                        height="17"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14ZM8.34 10H5.67v8h2.67v-8Zm-.02-3.1a1.55 1.55 0 1 0-3.1 0 1.55 1.55 0 0 0 3.1 0ZM18.33 13.4c0-2.4-1.28-3.52-2.98-3.52a2.58 2.58 0 0 0-2.32 1.28V10h-2.67v8h2.67v-4.1c0-1.08.2-2.13 1.55-2.13 1.33 0 1.35 1.24 1.35 2.2V18h2.67l-.27-4.6Z" />
+                      </svg>
+                      LinkedIn
+                    </a>
 
-                  <a
-                    href="#projects"
-                    className="flex items-center justify-between rounded-xl border border-slate-700 bg-white/[0.02] px-5 py-4 text-sm font-medium text-slate-300 transition hover:border-blue-400/30 hover:text-blue-300"
-                  >
-                    Explore My Projects <ArrowRight size={17} />
-                  </a>
-
-                  <div className="flex items-center gap-3 pt-3 text-xs text-slate-500">
-                    <span className="h-px flex-1 bg-white/[0.08]" />
-                    OPEN TO LEARNING & COLLABORATION
-                    <span className="h-px flex-1 bg-white/[0.08]" />
+                    <a
+                      href="https://www.instagram.com/deanseptaramadhan/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-xl border border-pink-400/30 bg-pink-500/10 px-4 py-3 text-sm font-medium text-pink-300 transition hover:-translate-y-1 hover:border-pink-400 hover:bg-pink-500/20 hover:text-white"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5Zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5Zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5Zm5.5-2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z" />
+                      </svg>
+                      Instagram
+                    </a>
                   </div>
                 </div>
-              </motion.div>
-            </div>
+
+
+    <div className="space-y-4">
+                        <a
+                          href={`mailto:${email}?subject=${encodeURIComponent('Hello Dean')}`}
+                          className="group flex items-center justify-between rounded-xl bg-blue-600 px-5 py-4 font-semibold text-white transition hover:bg-blue-500"
+                        >
+                          <span className="flex items-center gap-3 text-sm">
+                            <Send size={18} /> Send Me an Email
+                          </span>
+
+                          <ArrowUpRight
+                            size={18}
+                            className="transition group-hover:-translate-y-1 group-hover:translate-x-1"
+                          />
+                        </a>
+
+                        <a
+                          href="#projects"
+                          className="flex items-center justify-between rounded-xl border border-slate-700 bg-white/[0.02] px-5 py-4 text-sm font-medium text-slate-300 transition hover:border-blue-400/30 hover:text-blue-300"
+                        >
+                          Explore My Projects <ArrowRight size={17} />
+                        </a>
+
+                        <div className="flex items-center gap-3 pt-3 text-xs text-slate-500">
+                          <span className="h-px flex-1 bg-white/[0.08]" />
+                          OPEN TO LEARNING & COLLABORATION
+                          <span className="h-px flex-1 bg-white/[0.08]" />
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+              </section>
+            </main>
+
+            {/* Footer */}
+            <footer className="relative z-10 border-t border-white/[0.07]">
+              <div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
+
+                <a href="#home" className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-blue-400/20 bg-blue-500/10 text-xs font-black text-blue-300">
+                    DS
+                  </div>
+
+                  <div>
+                    <p className="text-sm font-bold text-white">
+                      DEAN<span className="text-blue-400">.DEV</span>
+                    </p>
+                    <p className="mt-1 text-[10px] text-slate-500">
+                      Personal Portfolio
+                    </p>
+                  </div>
+                </a>
+
+                <p className="text-xs text-slate-500">
+                  © {new Date().getFullYear()} Dean Septa Ramadhan. Built with React.
+                </p>
+
+                <div className="flex items-center gap-3">
+
+                  {/* GitHub */}
+                  <a
+                    href="https://dean-portfolio-psi.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    title="GitHub"
+                    className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:-translate-y-1 hover:border-blue-400/30 hover:text-blue-300"
+                  >
+                    <Code2 size={17} />
+                  </a>
+
+                  {/* LinkedIn */}
+                  <a
+                    href="https://www.linkedin.com/in/dean-septa-ramadhan-b5673a446/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    title="LinkedIn"
+                    className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:-translate-y-1 hover:border-blue-400/30 hover:text-blue-300"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="17"
+                      height="17"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14ZM8.34 10H5.67v8h2.67v-8Zm-.02-3.1a1.55 1.55 0 1 0-3.1 0 1.55 1.55 0 0 0 3.1 0ZM18.33 13.4c0-2.4-1.28-3.52-2.98-3.52a2.58 2.58 0 0 0-2.32 1.28V10h-2.67v8h2.67v-4.1c0-1.08.2-2.13 1.55-2.13 1.33 0 1.35 1.24 1.35 2.2V18h2.67l-.27-4.6Z" />
+                    </svg>
+                  </a>
+
+                  {/* Instagram */}
+                  <a
+                    href="https://www.instagram.com/deanseptaramadhan/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    title="Instagram"
+                    className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:-translate-y-1 hover:border-pink-400/30 hover:text-pink-300"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="17"
+                      height="17"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="3" y="3" width="18" height="18" rx="5" />
+                      <circle cx="12" cy="12" r="4" />
+                      <circle cx="18" cy="6" r="0.8" fill="currentColor" />
+                    </svg>
+                  </a>
+
+                  {/* Email */}
+                  <a
+                    href={`mailto:${email}`}
+                    aria-label="Email"
+                    title="Email"
+                    className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:-translate-y-1 hover:border-blue-400/30 hover:text-blue-300"
+                  >
+                    <Mail size={17} />
+                  </a>
+
+                </div>
+              </div>
+            </footer>
           </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-white/[0.07]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
-          <a href="#home" className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-blue-400/20 bg-blue-500/10 text-xs font-black text-blue-300">
-              DS
-            </div>
-
-            <div>
-              <p className="text-sm font-bold text-white">
-                DEAN<span className="text-blue-400">.DEV</span>
-              </p>
-              <p className="mt-1 text-[10px] text-slate-500">
-                Personal Portfolio
-              </p>
-            </div>
-          </a>
-
-          <p className="text-xs text-slate-500">
-            © {new Date().getFullYear()} Dean Septa Ramadhan. Built with React.
-          </p>
-
-          <div className="flex items-center gap-3">
-            <a
-              href="https://github.com/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:border-blue-400/30 hover:text-blue-300"
-            >
-              <Code2 size={17} />
-            </a>
-
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-              className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:border-blue-400/30 hover:text-blue-300"
-            >
-              <Code2 size={17} />
-            </a>
-
-            <a
-              href={`mailto:${email}`}
-              aria-label="Email"
-              className="rounded-lg border border-slate-800 p-2.5 text-slate-400 transition hover:border-blue-400/30 hover:text-blue-300"
-            >
-              <Mail size={17} />
-            </a>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
+          )
 }
 
-export default App
+          export default App
