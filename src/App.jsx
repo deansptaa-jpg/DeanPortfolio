@@ -126,6 +126,7 @@ function App() {
     { label: 'About', href: '#about' },
     { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
+    { label: 'Certificates', href: '#certificates' },
     { label: 'Experience', href: '#experience' },
     { label: 'Contact', href: '#contact' },
   ]
@@ -709,60 +710,89 @@ function App() {
           </div>
         </section>
 
-        {/* Certificates and Learning */}
+        {/* Certificates */}
         <section
           id="certificates"
           className="scroll-mt-24 border-t border-white/[0.04] py-24 sm:py-28"
         >
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
             <SectionHeading
-              label="ACHIEVEMENTS"
+              label="CERTIFICATION"
               title={
                 <>
-                  Certificates & <span className="hero-gradient">Learning</span>
+                  My <span className="hero-gradient">Certificate</span>
                 </>
               }
-              description="Rangkuman bidang pembelajaran yang sedang saya kembangkan."
+              description="A record of my learning journey and competency development in information technology."
             />
 
-            <div className="grid gap-5 md:grid-cols-3">
-              {[
-                'Fundamental Data Analysis',
-                'Database Security',
-                'Web Development',
-              ].map((title, index) => (
-                <motion.div
-                  key={title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.4, delay: index * 0.08 }}
-                  whileHover={{ y: -6, scale: 1.015 }}
-                  className="project-card neon-border rounded-2xl bg-[#0a1022]/80 p-6"
+            <motion.article
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, ease: 'easeOut' }}
+              className="project-card mx-auto grid max-w-5xl overflow-hidden rounded-3xl border border-blue-400/20 bg-[#0a1022]/85 shadow-2xl shadow-blue-950/20 md:grid-cols-[1.05fr_0.95fr]"
+            >
+              <a
+                href="/certificates/sertifikat-database.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block min-h-[260px] overflow-hidden bg-[#080d1d] p-4 sm:p-6"
+                aria-label="View Database Systems certificate"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-400/10" />
+                <img
+                  src="/images/sertifikat-database.png"
+                  alt="Database Systems Competency Assessment certificate"
+                  className="relative h-full max-h-[420px] w-full rounded-xl object-contain transition duration-500 group-hover:scale-[1.025]"
+                />
+                <span className="absolute bottom-8 right-8 inline-flex items-center gap-2 rounded-full border border-white/15 bg-[#050816]/85 px-3 py-2 text-xs font-medium text-white backdrop-blur-md">
+                  Preview certificate <ArrowUpRight size={14} />
+                </span>
+              </a>
+
+              <div className="flex flex-col justify-center p-6 sm:p-9 lg:p-10">
+                <div className="mb-6 flex flex-wrap items-center gap-2">
+                  <span className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-3 py-1.5 text-[10px] font-bold tracking-[0.16em] text-cyan-200">
+                    INTERMEDIATE
+                  </span>
+                  <span className="rounded-full border border-slate-700 bg-white/[0.03] px-3 py-1.5 text-[10px] tracking-[0.12em] text-slate-400">
+                    14 JP
+                  </span>
+                </div>
+
+                <p className="text-[10px] font-semibold tracking-[0.2em] text-blue-300">
+                  DATABASE SYSTEMS
+                </p>
+                <h3 className="mt-3 text-2xl font-bold leading-snug text-white sm:text-3xl">
+                  Industry-Based Database Systems Competency Assessment
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-slate-400">
+                  Uji profisiensi berbasis industri keilmuan Sistem Basis Data,
+                  meliputi workshop, pengerjaan projek, dan uji kompetensi.
+                </p>
+
+                <div className="mt-7 space-y-3 border-t border-white/[0.07] pt-5">
+                  <div className="flex items-center justify-between gap-4 text-sm">
+                    <span className="text-slate-500">Issued by</span>
+                    <span className="text-right font-medium text-slate-200">PT. Iner Corp Indonesia</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 text-sm">
+                    <span className="text-slate-500">Date</span>
+                    <span className="font-medium text-slate-200">June 25, 2026</span>
+                  </div>
+                </div>
+
+                <a
+                  href="/certificates/sertifikat-database.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-8 inline-flex w-fit items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-900/25 transition hover:-translate-y-0.5 hover:shadow-cyan-900/30"
                 >
-                  <div className="mb-6 flex items-start justify-between">
-                    <div className="rounded-xl border border-blue-400/20 bg-blue-500/10 p-3 text-blue-300">
-                      <Award size={23} />
-                    </div>
-                    <span className="rounded-md border border-slate-700 px-2.5 py-1 text-[10px] text-slate-500">
-                      2026
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-bold text-white">{title}</h3>
-                  <p className="mt-2 text-sm text-slate-400">Academic Project</p>
-
-                  <div className="mt-6 flex items-center gap-2 border-t border-white/[0.07] pt-4 text-xs text-blue-300">
-                    <Check size={14} /> Learning Milestone
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <p className="mt-6 text-center text-xs leading-6 text-slate-600">
-              Bagian ini menunjukkan bidang pembelajaran, bukan sertifikat resmi.
-              Ganti dengan sertifikat yang benar-benar kamu miliki jika sudah ada.
-            </p>
+                  View Certificate <ArrowUpRight size={16} />
+                </a>
+              </div>
+            </motion.article>
           </div>
         </section>
 
