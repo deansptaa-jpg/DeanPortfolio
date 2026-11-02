@@ -77,7 +77,7 @@ const education = [
     title: 'Praktik Kerja Lapangan',
     place: 'Sekretariat Daerah Kabupaten Bogor',
     detail:
-      'Pengalaman PKL saat SMA dengan tugas membantu input data menggunakan komputer.',
+      'Pengalaman PKL saat SMK dengan tugas membantu input data menggunakan komputer.',
     icon: BriefcaseBusiness,
   },
 ]
@@ -186,68 +186,91 @@ function App() {
 
       {/* Navbar */}
       <motion.header
-        initial={{ opacity: 0, y: -18 }}
+        initial={{ opacity: 0, y: -15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55, ease: 'easeOut' }}
-        className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#050816]/85 backdrop-blur-xl"
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.07] bg-[#050816]/90 backdrop-blur-2xl"
       >
-        <nav className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
-          <a href="#home" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-400/30 bg-blue-500/10 font-black text-blue-300">
+        <nav className="mx-auto flex h-[82px] max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
+
+          {/* BRAND */}
+          <a href="#home" className="group flex items-center gap-3.5">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-blue-400/25 bg-blue-500/[0.08] text-sm font-extrabold tracking-wider text-blue-300 transition duration-300 group-hover:border-blue-400/50 group-hover:bg-blue-500/15">
               DS
             </div>
 
-            <div>
-              <p className="text-sm font-bold tracking-wide text-white">
+            <div className="flex flex-col">
+              <span className="text-[16px] font-bold tracking-[0.08em] text-white">
                 DEAN<span className="text-blue-400">.DEV</span>
-              </p>
-              <p className="mt-1 text-[10px] tracking-[0.2em] text-slate-500">
+              </span>
+
+              <span className="mt-1 text-[9px] font-medium tracking-[0.22em] text-slate-500">
                 PERSONAL PORTFOLIO
-              </p>
+              </span>
             </div>
           </a>
 
-          <div className="hidden items-center gap-6 lg:flex">
+          {/* DESKTOP NAVIGATION */}
+          <div className="hidden items-center gap-8 lg:flex">
             {navigation.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-sm text-slate-400 transition hover:text-blue-300"
+                className="group relative py-2 text-[13px] font-medium tracking-wide text-slate-400 transition-colors duration-300 hover:text-white"
               >
                 {item.label}
+
+                <span className="absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 rounded-full bg-blue-400 transition-transform duration-300 group-hover:scale-x-100" />
               </a>
             ))}
           </div>
 
+          {/* CONTACT */}
           <a
             href="#contact"
-            className="hidden items-center gap-2 rounded-lg border border-blue-400/30 bg-blue-500/10 px-4 py-2.5 text-sm text-blue-200 transition hover:bg-blue-500/20 md:inline-flex"
+            className="hidden items-center gap-2 rounded-lg border border-blue-400/30 bg-blue-500/[0.08] px-5 py-3 text-[13px] font-semibold text-blue-200 transition-all duration-300 hover:border-blue-400/60 hover:bg-blue-500/15 hover:text-white lg:inline-flex"
           >
-            Let&apos;s Talk <ArrowUpRight size={16} />
+            Let's Talk
+            <ArrowUpRight size={16} />
           </a>
 
+          {/* MOBILE BUTTON */}
           <button
             type="button"
             aria-label="Buka menu navigasi"
+            aria-expanded={menuOpen}
             onClick={() => setMenuOpen(!menuOpen)}
-            className="rounded-lg border border-white/10 p-2 md:hidden"
+            className="rounded-lg border border-white/10 bg-white/[0.03] p-2.5 text-slate-300 transition hover:border-blue-400/40 hover:text-white lg:hidden"
           >
             {menuOpen ? <X size={21} /> : <Menu size={21} />}
           </button>
         </nav>
 
+        {/* MOBILE NAVIGATION */}
         {menuOpen && (
-          <div className="border-t border-white/10 bg-[#080d20] px-5 py-4 md:hidden">
-            {navigation.map((item) => (
+          <div className="border-t border-white/[0.07] bg-[#080d20]/95 px-5 py-5 backdrop-blur-2xl lg:hidden">
+            <div className="mx-auto max-w-7xl space-y-1">
+              {navigation.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-between rounded-lg px-4 py-3.5 text-sm font-medium text-slate-300 transition hover:bg-blue-500/[0.08] hover:text-blue-300"
+                >
+                  {item.label}
+                  <ArrowUpRight size={15} className="text-slate-600" />
+                </a>
+              ))}
+
               <a
-                key={item.label}
-                href={item.href}
+                href="#contact"
                 onClick={() => setMenuOpen(false)}
-                className="block rounded-lg px-3 py-3 text-sm text-slate-300 hover:bg-blue-500/10 hover:text-blue-300"
+                className="mt-3 flex items-center justify-center gap-2 rounded-lg border border-blue-400/30 bg-blue-500/10 px-4 py-3.5 text-sm font-semibold text-blue-200"
               >
-                {item.label}
+                Let's Talk
+                <ArrowUpRight size={16} />
               </a>
-            ))}
+            </div>
           </div>
         )}
       </motion.header>
