@@ -127,10 +127,17 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false)
 
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = 0.3
-    }
-  }, [])
+  if (audioRef.current) {
+    audioRef.current.volume = 0.15
+
+    audioRef.current.play()
+      .then(() => setIsPlaying(true))
+      .catch(() => {
+        setIsPlaying(false)
+        console.log('Autoplay diblokir oleh browser.')
+      })
+  }
+}, [])
 
   async function startMusic() {
     if (!audioRef.current) return
