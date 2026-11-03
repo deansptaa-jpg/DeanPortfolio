@@ -1,6 +1,13 @@
-import { useState } from 'react'
-import Particles3D from "./components/Particles3D";
-import { motion, useMotionValue, useSpring, useScroll } from 'framer-motion'
+import { useState } from 'react';
+import Particles3D from './components/Particles3D';
+
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+  useScroll,
+} from 'framer-motion';
 
 import {
   ArrowDown,
@@ -20,7 +27,7 @@ import {
   Sparkles,
   Terminal,
   X,
-} from 'lucide-react'
+} from 'lucide-react';
 
 const projects = [
   {
@@ -184,43 +191,46 @@ function App() {
         ))}
       </div>
 
-      {/* Navbar */}
+      {/* ULTRA PREMIUM NAVBAR */}
       <motion.header
-        initial={{ opacity: 0, y: -15 }}
+        initial={{ opacity: 0, y: -25 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.07] bg-[#050816]/90 backdrop-blur-2xl"
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-10"
       >
-        <nav className="mx-auto flex h-[82px] max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
+        <nav className="relative mx-auto flex h-[72px] max-w-7xl items-center justify-between rounded-2xl border border-white/[0.09] bg-[#080d1d]/80 px-4 shadow-[0_12px_50px_rgba(0,0,0,0.3)] backdrop-blur-2xl sm:px-6 lg:px-7">
+
+          {/* GRADIENT BORDER GLOW */}
+          <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/[0.08] via-transparent to-cyan-400/[0.08]" />
 
           {/* BRAND */}
-          <a href="#home" className="group flex items-center gap-3.5">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-blue-400/25 bg-blue-500/[0.08] text-sm font-extrabold tracking-wider text-blue-300 transition duration-300 group-hover:border-blue-400/50 group-hover:bg-blue-500/15">
+          <a href="#home" className="group relative z-10 flex shrink-0 items-center gap-3">
+            <div className="relative flex h-11 w-11 items-center justify-center rounded-xl border border-blue-400/30 bg-gradient-to-br from-blue-500/20 to-cyan-400/[0.05] text-sm font-black tracking-wider text-cyan-200 transition-all duration-500 group-hover:border-cyan-300/70 group-hover:shadow-[0_0_25px_rgba(34,211,238,0.2)]">
               DS
+              <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full border-2 border-[#080d1d] bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
             </div>
 
             <div className="flex flex-col">
-              <span className="text-[16px] font-bold tracking-[0.08em] text-white">
-                DEAN<span className="text-blue-400">.DEV</span>
+              <span className="text-[15px] font-extrabold tracking-[0.08em] text-white">
+                DEAN<span className="text-cyan-400">.DEV</span>
               </span>
-
-              <span className="mt-1 text-[9px] font-medium tracking-[0.22em] text-slate-500">
-                PERSONAL PORTFOLIO
+              <span className="mt-0.5 text-[8px] font-semibold tracking-[0.25em] text-slate-500">
+                DIGITAL PORTFOLIO
               </span>
             </div>
           </a>
 
           {/* DESKTOP NAVIGATION */}
-          <div className="hidden items-center gap-8 lg:flex">
+          <div className="relative z-10 hidden items-center gap-1 rounded-xl border border-white/[0.05] bg-white/[0.025] p-1.5 lg:flex">
             {navigation.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="group relative py-2 text-[13px] font-medium tracking-wide text-slate-400 transition-colors duration-300 hover:text-white"
+                className="group relative rounded-lg px-4 py-2.5 text-[12px] font-medium tracking-wide text-slate-400 transition-all duration-300 hover:bg-white/[0.06] hover:text-white"
               >
                 {item.label}
 
-                <span className="absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 rounded-full bg-blue-400 transition-transform duration-300 group-hover:scale-x-100" />
+                <span className="absolute bottom-1 left-1/2 h-[2px] w-4 -translate-x-1/2 scale-x-0 rounded-full bg-gradient-to-r from-blue-400 to-cyan-300 opacity-0 shadow-[0_0_10px_rgba(34,211,238,0.8)] transition-all duration-300 group-hover:scale-x-100 group-hover:opacity-100" />
               </a>
             ))}
           </div>
@@ -228,34 +238,44 @@ function App() {
           {/* CONTACT */}
           <a
             href="#contact"
-            className="hidden items-center gap-2 rounded-lg border border-blue-400/30 bg-blue-500/[0.08] px-5 py-3 text-[13px] font-semibold text-blue-200 transition-all duration-300 hover:border-blue-400/60 hover:bg-blue-500/15 hover:text-white lg:inline-flex"
+            className="group relative z-10 hidden items-center gap-2 overflow-hidden rounded-xl border border-blue-400/30 bg-gradient-to-r from-blue-600/20 to-cyan-500/10 px-5 py-3 text-[12px] font-bold tracking-wide text-blue-100 transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-300/60 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] lg:inline-flex"
           >
-            Let's Talk
-            <ArrowUpRight size={16} />
+            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.08] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+            <span className="relative">LET'S TALK</span>
+            <ArrowUpRight
+              size={16}
+              className="relative transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
           </a>
 
-          {/* MOBILE BUTTON */}
+          {/* MOBILE MENU BUTTON */}
           <button
             type="button"
             aria-label="Buka menu navigasi"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen(!menuOpen)}
-            className="rounded-lg border border-white/10 bg-white/[0.03] p-2.5 text-slate-300 transition hover:border-blue-400/40 hover:text-white lg:hidden"
+            className="relative z-10 rounded-xl border border-white/10 bg-white/[0.04] p-2.5 text-slate-300 transition-all duration-300 hover:border-cyan-400/40 hover:bg-cyan-400/[0.08] hover:text-cyan-200 lg:hidden"
           >
-            {menuOpen ? <X size={21} /> : <Menu size={21} />}
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </nav>
 
         {/* MOBILE NAVIGATION */}
-        {menuOpen && (
-          <div className="border-t border-white/[0.07] bg-[#080d20]/95 px-5 py-5 backdrop-blur-2xl lg:hidden">
-            <div className="mx-auto max-w-7xl space-y-1">
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -12, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+              className="mx-auto mt-2 max-w-7xl overflow-hidden rounded-2xl border border-white/10 bg-[#080d1d]/95 p-3 shadow-2xl backdrop-blur-2xl lg:hidden"
+            >
               {navigation.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-center justify-between rounded-lg px-4 py-3.5 text-sm font-medium text-slate-300 transition hover:bg-blue-500/[0.08] hover:text-blue-300"
+                  className="flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-medium text-slate-300 transition-all duration-300 hover:bg-blue-500/10 hover:text-cyan-300"
                 >
                   {item.label}
                   <ArrowUpRight size={15} className="text-slate-600" />
@@ -265,233 +285,307 @@ function App() {
               <a
                 href="#contact"
                 onClick={() => setMenuOpen(false)}
-                className="mt-3 flex items-center justify-center gap-2 rounded-lg border border-blue-400/30 bg-blue-500/10 px-4 py-3.5 text-sm font-semibold text-blue-200"
+                className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-cyan-400/25 bg-gradient-to-r from-blue-600/20 to-cyan-500/10 px-4 py-3.5 text-sm font-bold text-cyan-200"
               >
-                Let's Talk
+                LET'S TALK
                 <ArrowUpRight size={16} />
               </a>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.header>
 
       <main className="relative z-10">
-        {/* Hero */}
+        {/* ULTRA PREMIUM HERO */}
         <section
           id="home"
-          className="mx-auto flex min-h-screen max-w-7xl scroll-mt-20 items-center px-5 pb-20 pt-32 sm:px-8 lg:px-12"
+          className="relative isolate mx-auto flex min-h-screen max-w-7xl scroll-mt-20 items-center overflow-hidden px-5 pb-24 pt-32 sm:px-8 lg:px-12"
         >
-          <div className="grid w-full items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+          {/* BACKGROUND GLOW */}
+          <div className="pointer-events-none absolute -left-40 top-1/4 -z-10 h-80 w-80 rounded-full bg-blue-600/[0.12] blur-[120px]" />
+          <div className="pointer-events-none absolute -right-32 bottom-10 -z-10 h-96 w-96 rounded-full bg-cyan-500/[0.10] blur-[130px]" />
+
+          <div className="grid w-full items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+
+            {/* LEFT CONTENT */}
             <motion.div
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 35 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="order-2 lg:order-1"
             >
-              <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-500/[0.07] px-4 py-2.5 text-xs text-blue-200 sm:text-sm">
-                <Sparkles size={15} className="text-cyan-300" />
-                Information Systems Student
-                <span className="ml-1 h-2 w-2 rounded-full bg-emerald-400" />
-              </div>
 
-              <p className="mb-3 text-sm tracking-[0.25em] text-slate-400">
-                HELLO, I&apos;M
+              {/* INTRODUCTION */}
+              <p className="mb-4 text-xs font-semibold tracking-[0.35em] text-slate-500 sm:text-sm">
+                HELLO, I'M
               </p>
 
+              {/* NAME */}
               <motion.h1
                 initial="hidden"
                 animate="visible"
-                variants={{ visible: { transition: { staggerChildren: 0.13, delayChildren: 0.15 } } }}
+                variants={{
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.15,
+                      delayChildren: 0.2,
+                    },
+                  },
+                }}
                 className="text-5xl font-black leading-[1.08] tracking-tight text-white sm:text-6xl xl:text-7xl"
               >
-                <motion.span className="inline-block" variants={{ hidden: { opacity: 0, y: 35, filter: 'blur(8px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)' } }} transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}>Dean Septa</motion.span>
+                <motion.span
+                  className="inline-block"
+                  variants={{
+                    hidden: { opacity: 0, y: 35, filter: "blur(8px)" },
+                    visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+                  }}
+                  transition={{ duration: 0.8 }}
+                >
+                  Dean Septa
+                </motion.span>
+
                 <br />
-                <motion.span className="hero-gradient neon-text inline-block" variants={{ hidden: { opacity: 0, y: 35, filter: 'blur(8px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)' } }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>Ramadhan.</motion.span>
+
+                <motion.span
+                  className="hero-gradient neon-text inline-block"
+                  variants={{
+                    hidden: { opacity: 0, y: 35, filter: "blur(8px)" },
+                    visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+                  }}
+                  transition={{ duration: 0.9 }}
+                >
+                  Ramadhan.
+                </motion.span>
               </motion.h1>
 
-              <h2 className="mt-6 text-xl font-semibold text-slate-300 sm:text-2xl">
-                Aspiring <span className="text-blue-300">System Analyst & Web Developer</span>
+              {/* PROFESSION */}
+              <h2 className="mt-7 text-xl font-semibold leading-relaxed text-slate-300 sm:text-2xl">
+                Aspiring{" "}
+                <span className="bg-gradient-to-r from-blue-300 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+                  System Analyst & Web Developer
+                </span>
               </h2>
 
-              <p className="mt-5 max-w-xl text-sm leading-8 text-slate-400 sm:text-base">
-                I am an Information Systems student with a strong interest in web development, digital technology, and data analysis. I continuously develop my technical and analytical skills through various projects, learning experiences, and new challenges to create innovative and meaningful digital solutions.
-
+              {/* DESCRIPTION */}
+              <p className="mt-6 max-w-xl text-sm leading-8 text-slate-400 sm:text-base">
+                I am an Information Systems student with a strong interest in web
+                development, digital technology, and data analysis. I continuously
+                develop my technical and analytical skills through various projects,
+                learning experiences, and new challenges to create innovative and
+                meaningful digital solutions.
               </p>
 
+              {/* BUTTONS */}
               <div className="mt-9 flex flex-wrap gap-4">
+
                 <motion.a
                   href="#projects"
-                  whileHover={{ y: -3, scale: 1.025 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group inline-flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-950/40 transition hover:-translate-y-0.5 hover:bg-blue-500"
+                  whileHover={{ y: -4, scale: 1.035 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="group relative inline-flex items-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-7 py-4 text-sm font-bold text-white shadow-[0_8px_30px_rgba(37,99,235,0.25)] transition-all duration-300 hover:shadow-[0_8px_35px_rgba(34,211,238,0.25)]"
                 >
-                  Explore My Work
+                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+
+                  <span className="relative">Explore My Work</span>
+
                   <ArrowRight
-                    size={17}
-                    className="transition group-hover:translate-x-1"
+                    size={18}
+                    className="relative transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </motion.a>
 
                 <motion.a
                   href="#contact"
-                  whileHover={{ y: -3, scale: 1.025 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-white/[0.025] px-6 py-3.5 text-sm font-semibold transition hover:border-blue-400/50 hover:text-blue-300"
+                  whileHover={{ y: -4, scale: 1.035 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.035] px-7 py-4 text-sm font-semibold text-slate-200 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/40 hover:bg-cyan-400/[0.06] hover:text-cyan-200"
                 >
                   <Mail size={17} />
                   Contact Me
                 </motion.a>
+
               </div>
 
-              <div className="mt-12 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-white/[0.08] pt-7">
+              {/* STATISTICS */}
+              <div className="mt-14 grid max-w-xl grid-cols-3 border-t border-white/[0.08] pt-8">
+
                 <div>
-                  <p className="text-2xl font-bold text-white">
-                    03<span className="text-blue-400">+</span>
+                  <p className="text-2xl font-black text-white sm:text-3xl">
+                    03<span className="text-cyan-400">+</span>
                   </p>
-                  <p className="mt-1 text-xs text-slate-500">Learning Projects</p>
-                </div>
-
-                <div className="h-10 w-px bg-white/10" />
-
-                <div>
-                  <p className="text-2xl font-bold text-white">
-                    08<span className="text-blue-400">+</span>
+                  <p className="mt-2 text-[10px] leading-5 text-slate-500 sm:text-xs">
+                    Learning Projects
                   </p>
-                  <p className="mt-1 text-xs text-slate-500">Technologies Explored</p>
                 </div>
 
-                <div className="h-10 w-px bg-white/10" />
-
-                <div>
-                  <p className="text-2xl font-bold text-white">100%</p>
-                  <p className="mt-1 text-xs text-slate-500">Learning Mindset</p>
+                <div className="border-x border-white/[0.08] px-5">
+                  <p className="text-2xl font-black text-white sm:text-3xl">
+                    08<span className="text-cyan-400">+</span>
+                  </p>
+                  <p className="mt-2 text-[10px] leading-5 text-slate-500 sm:text-xs">
+                    Technologies Explored
+                  </p>
                 </div>
+
+                <div className="pl-5">
+                  <p className="text-2xl font-black text-white sm:text-3xl">
+                    100<span className="text-cyan-400">%</span>
+                  </p>
+                  <p className="mt-2 text-[10px] leading-5 text-slate-500 sm:text-xs">
+                    Learning Mindset
+                  </p>
+                </div>
+
               </div>
             </motion.div>
 
-            {/* Photo */}
+            {/* RIGHT PHOTO */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.82, rotateY: 12, y: 24 }}
-              animate={{ opacity: 1, scale: 1, rotateY: 0, y: [0, -7, 0] }}
-              whileHover={{ rotateY: -3, rotateX: 2, scale: 1.015 }}
-              transition={{ opacity: { duration: 0.8, delay: 0.15 }, scale: { duration: 0.9, delay: 0.15 }, rotateY: { duration: 0.9, delay: 0.15 }, y: { duration: 6, repeat: Infinity, ease: 'easeInOut' } }}
+              initial={{ opacity: 0, scale: 0.85, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+              transition={{
+                opacity: { duration: 0.9, delay: 0.2 },
+                scale: { duration: 0.9, delay: 0.2 },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+              }}
+              whileHover={{ scale: 1.015 }}
               style={{ transformPerspective: 1000 }}
               className="order-1 mx-auto w-full max-w-[430px] lg:order-2"
             >
               <div className="relative mx-auto aspect-[4/4.5] max-w-[390px]">
-                <motion.div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -right-8 top-8 z-20 h-3 w-3 rounded-full bg-cyan-200 shadow-[0_0_22px_7px_rgba(34,211,238,0.55)]"
-                  animate={{ x: [0, -12, 0], y: [0, 26, 0], scale: [0.8, 1.25, 0.8], opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
-                />
+
+                {/* ORBIT */}
                 <div className="portrait-orbit absolute -inset-4 rounded-[38px] border border-blue-400/20" />
+
                 <motion.div
                   className="portrait-orbit portrait-orbit-delayed absolute -inset-8 rounded-[46px] border border-cyan-400/10"
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 38, repeat: Infinity, ease: 'linear' }}
+                  transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
                 />
+
                 <motion.div
                   className="absolute -inset-5 rounded-[42px] border border-dashed border-blue-300/15"
                   animate={{ rotate: -360 }}
-                  transition={{ duration: 52, repeat: Infinity, ease: 'linear' }}
+                  transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
                 />
 
-                <div className="absolute -left-5 top-16 h-20 w-20 rounded-full bg-blue-600/20 blur-3xl" />
-                <div className="absolute -right-8 bottom-10 h-28 w-28 rounded-full bg-cyan-500/20 blur-3xl" />
+                {/* GLOW */}
+                <div className="absolute -left-10 top-16 h-28 w-28 rounded-full bg-blue-600/25 blur-3xl" />
+                <div className="absolute -right-10 bottom-10 h-32 w-32 rounded-full bg-cyan-500/25 blur-3xl" />
 
+                {/* ROTATING LIGHT */}
                 <motion.div
                   aria-hidden="true"
                   className="pointer-events-none absolute -inset-[3px] rounded-[33px] bg-[conic-gradient(from_0deg,transparent_0deg,#38bdf8_65deg,transparent_130deg,#818cf8_220deg,transparent_300deg)] opacity-80 blur-[2px]"
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 9, repeat: Infinity, ease: 'linear' }}
+                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                 />
+
+                {/* PHOTO FRAME */}
                 <div className="neon-border absolute inset-0 overflow-hidden rounded-[30px] bg-[#0b1227] p-2">
                   <div className="relative h-full overflow-hidden rounded-[23px] bg-[#080d1d]">
+
                     <img
                       src="/images/dean.jpeg"
                       alt="Foto Dean Septa Ramadhan"
                       className="absolute inset-0 h-full w-full object-cover object-center"
                     />
+
+                    {/* IMAGE OVERLAY */}
                     <motion.div
                       aria-hidden="true"
                       className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-blue-500/15 via-transparent to-cyan-300/15 mix-blend-screen"
-                      animate={{ opacity: [0.15, 0.55, 0.15] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                      animate={{ opacity: [0.15, 0.45, 0.15] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                     />
+
+                    {/* SCANNING LIGHT */}
                     <motion.div
                       aria-hidden="true"
                       className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-cyan-300/20 to-transparent"
-                      animate={{ y: ['-100%', '440%'] }}
-                      transition={{ duration: 5.5, repeat: Infinity, ease: 'linear', repeatDelay: 1.2 }}
+                      animate={{ y: ["-100%", "440%"] }}
+                      transition={{
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "linear",
+                        repeatDelay: 1,
+                      }}
                     />
+
                     <div className="portrait-scan pointer-events-none absolute inset-0" />
-                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#050816] via-[#050816]/60 to-transparent" />
+
+                    {/* PHOTO TEXT */}
+                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#050816] via-[#050816]/65 to-transparent" />
 
                     <div className="absolute bottom-5 left-5 right-5">
-                      <p className="text-xs tracking-[0.2em] text-blue-300">
+                      <p className="text-xs font-semibold tracking-[0.22em] text-cyan-300">
                         INFORMATION SYSTEMS
                       </p>
-                      <p className="mt-2 text-2xl font-bold text-white">
+
+                      <p className="mt-2 text-xl font-bold text-white sm:text-2xl">
                         Dean Septa Ramadhan
                       </p>
+
                       <div className="mt-4 h-px bg-gradient-to-r from-blue-400/70 via-cyan-300/30 to-transparent" />
                     </div>
+
                   </div>
                 </div>
 
+                {/* FLOATING CARD LEFT */}
                 <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
+                  animate={{ y: [0, -9, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                   className="float-card absolute -left-9 top-[27%] hidden items-center gap-3 rounded-xl border border-blue-400/20 bg-[#0a1022]/95 px-4 py-3 shadow-xl backdrop-blur-xl sm:flex"
                 >
                   <div className="rounded-lg bg-blue-500/15 p-2 text-blue-300">
                     <Code2 size={20} />
                   </div>
+
                   <div>
                     <p className="text-xs font-semibold text-white">
-
+                      Web Development
                     </p>
                     <p className="mt-1 text-[10px] text-slate-500">
-
+                      Building Digital Solutions
                     </p>
                   </div>
                 </motion.div>
 
+                {/* FLOATING CARD RIGHT */}
                 <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{
-                    duration: 4.5,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
+                  animate={{ y: [0, 9, 0] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
                   className="float-card float-card-delayed absolute -right-5 bottom-[22%] hidden items-center gap-3 rounded-xl border border-cyan-400/20 bg-[#0a1022]/95 px-4 py-3 shadow-xl backdrop-blur-xl sm:flex"
                 >
                   <div className="rounded-lg bg-cyan-500/15 p-2 text-cyan-300">
                     <Terminal size={20} />
                   </div>
+
                   <div>
                     <p className="text-xs font-semibold text-white">
+                      System Analysis
                     </p>
                     <p className="mt-1 text-[10px] text-slate-500">
+                      Technology & Data
                     </p>
                   </div>
                 </motion.div>
+
               </div>
             </motion.div>
           </div>
 
+          {/* SCROLL INDICATOR */}
           <a
             href="#about"
-            className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[10px] tracking-[0.22em] text-slate-500 hover:text-blue-300 md:flex"
+            className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[10px] font-medium tracking-[0.22em] text-slate-500 transition-colors hover:text-cyan-300 md:flex"
           >
             SCROLL TO EXPLORE
             <ArrowDown size={16} className="animate-bounce" />
           </a>
+
         </section>
 
         {/* About */}
@@ -504,92 +598,82 @@ function App() {
               label="ABOUT ME"
               title={
                 <>
-                  A Little Bit <span className="hero-gradient">About Me</span>
+                  Beyond the Code, <span className="hero-gradient">Who I Am</span>
                 </>
               }
-              description="Get to know my background, interests, and the journey I'm currently building."
+              description="A closer look at my interests, mindset, and passion for technology."
             />
 
-            <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-              <div className="neon-border rounded-2xl bg-[#0a1022]/80 p-7 sm:p-9">
-                <div className="mb-6 flex items-center gap-3">
-                  <div className="rounded-xl border border-blue-400/20 bg-blue-500/10 p-3 text-blue-300">
-                    <Sparkles size={22} />
-                  </div>
-                  <div>
-                    <p className="text-lg font-bold text-white">Who I Am</p>
-                    <p className="mt-1 text-xs text-slate-500">
-                      A curious mind in technology
-                    </p>
-                  </div>
-                </div>
-
-                <p className="text-sm leading-8 text-slate-400 sm:text-base">
-                  My interest in technology drives me to continuously explore how digital solutions can improve business processes and solve real-world problems.
-                </p>
-
-                <p className="mt-4 text-sm leading-8 text-slate-400 sm:text-base">
-                  As an Information Systems student, I am developing my knowledge in system analysis, database management, and web development. I also gained practical experience during my internship at the Bogor Regency Regional Secretariat, where I was involved in computer-based data entry and administrative activities.
-
-                  I am committed to continuously improving my technical and analytical skills, with the goal of contributing to meaningful technology projects and growing as a professional in the IT industry.
-
-                </p>
-
-                <div className="mt-7 flex flex-wrap gap-2">
-                  {[
-                    'Curious',
-                    'Adaptable',
-                    'Problem Solving',
-                    'Continuous Learning',
-                  ].map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-lg border border-slate-700/80 bg-white/[0.025] px-3 py-2 text-xs text-slate-300"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
-                <div className="neon-border rounded-2xl bg-[#0a1022]/80 p-6">
-                  <div className="mb-4 flex items-center justify-between">
-                    <div className="rounded-xl bg-blue-500/10 p-3 text-blue-300">
-                      <GraduationCap size={22} />
+            <div className="mx-auto max-w-4xl">
+              <div className="neon-border relative overflow-hidden rounded-2xl bg-[#0a1022]/80 p-7 sm:p-10">
+                <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-blue-500/10 blur-3xl" />
+                <div className="relative">
+                  <div className="mb-7 flex items-center gap-4">
+                    <div className="rounded-xl border border-blue-400/20 bg-blue-500/10 p-3 text-blue-300">
+                      <Sparkles size={23} />
                     </div>
-                    <span className="text-xs text-slate-600">01 / EDUCATION</span>
+                    <div>
+                      <p className="text-lg font-bold text-white">Who I Am</p>
+                      <p className="mt-1 text-xs tracking-wide text-slate-500">
+                        TECHNOLOGY ENTHUSIAST
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-lg font-bold text-white">
-                    Information Systems
+
+                  <h3 className="mb-5 text-2xl font-bold leading-snug text-white sm:text-3xl">
+                    Driven by curiosity,
+                    <span className="hero-gradient"> inspired by innovation.</span>
                   </h3>
-                  <p className="mt-2 text-sm text-slate-400">
-                    Universitas Bina Sarana Informatika
-                  </p>
-                  <p className="mt-4 text-xs leading-6 text-slate-500">
-                    Fokus belajar: sistem informasi, basis data, dan pengembangan aplikasi.
-                  </p>
-                </div>
 
-                <div className="neon-border rounded-2xl bg-[#0a1022]/80 p-6">
-                  <div className="mb-4 flex items-center justify-between">
-                    <div className="rounded-xl bg-cyan-500/10 p-3 text-cyan-300">
-                      <BriefcaseBusiness size={22} />
-                    </div>
-                    <span className="text-xs text-slate-600">02 / EXPERIENCE</span>
+                  <p className="text-sm leading-8 text-slate-400 sm:text-base">
+                    I am passionate about technology and digital innovation,
+                    especially how websites, databases, and data analysis can
+                    be used to create practical solutions for real-world problems.
+                  </p>
+
+                  <p className="mt-4 text-sm leading-8 text-slate-400 sm:text-base">
+                    I enjoy exploring new technologies, developing my technical
+                    abilities, and improving the way I approach challenges.
+                    I believe that curiosity and consistent learning are
+                    important parts of personal and professional growth.
+                  </p>
+
+                  <p className="mt-4 text-sm leading-8 text-slate-400 sm:text-base">
+                    My goal is to keep growing in the technology field,
+                    strengthen my analytical and problem-solving skills,
+                    and contribute to meaningful digital projects.
+                  </p>
+
+                  <div className="my-8 h-px bg-slate-800" />
+
+                  <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-slate-500">
+                    PERSONAL VALUES
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Curiosity",
+                      "Adaptability",
+                      "Problem Solving",
+                      "Continuous Learning",
+                      "Creativity",
+                      "Growth Mindset",
+                    ].map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-lg border border-slate-700/80 bg-white/[0.025] px-3 py-2 text-xs text-slate-300 transition hover:border-blue-400/40 hover:text-blue-300"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                  <h3 className="text-lg font-bold text-white">PKL Experience</h3>
-                  <p className="mt-2 text-sm text-slate-400">
-                    Sekretariat Daerah Kabupaten Bogor
-                  </p>
-                  <p className="mt-4 text-xs leading-6 text-slate-500">
-                    Membantu proses input data menggunakan komputer saat PKL di SMK.
-                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+
 
         {/* Projects */}
         <section
@@ -607,7 +691,14 @@ function App() {
               description="Beberapa proyek pembelajaran untuk mengembangkan kemampuan di bidang teknologi."
             />
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {/* HORIZONTAL PROJECT SLIDER */}
+            <div
+              className="flex snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-hidden pb-6"
+              style={{
+                scrollbarWidth: "thin",
+                scrollbarColor: "#334155 transparent",
+              }}
+            >
               {projects.map((project, index) => {
                 const ProjectIcon = project.icon
 
@@ -618,33 +709,41 @@ function App() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.15 }}
                     transition={{ duration: 0.45, delay: index * 0.1 }}
-                    whileHover={{ y: -10, scale: 1.02, rotateX: 1.5 }}
+                    whileHover={{ y: -8, scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
-                    className="project-card group overflow-hidden rounded-2xl border border-slate-800/90 bg-[#0a1022]/85"
+                    className="project-card group w-[85%] shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-800/90 bg-[#0a1022]/85 sm:w-[48%] xl:w-[calc(33.333%-1rem)]"
                   >
+                    {/* PROJECT VISUAL */}
                     <div className="relative flex h-48 items-center justify-center overflow-hidden bg-gradient-to-br from-blue-500/20 to-cyan-500/5">
                       <div className="absolute inset-0 bg-[linear-gradient(rgba(96,165,250,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(96,165,250,0.06)_1px,transparent_1px)] bg-[size:28px_28px]" />
+
                       <div className="absolute h-36 w-36 rounded-full border border-blue-300/10" />
                       <div className="absolute h-28 w-28 rounded-full border border-cyan-300/15" />
+
                       <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-blue-300/25 bg-[#080e20]/80 text-blue-300 shadow-lg shadow-blue-950/30 transition duration-300 group-hover:scale-110">
                         <ProjectIcon size={34} strokeWidth={1.4} />
                       </div>
+
                       <span className="absolute right-5 top-5 text-xs tracking-[0.2em] text-blue-200/60">
                         {project.number}
                       </span>
                     </div>
 
+                    {/* PROJECT INFORMATION */}
                     <div className="p-6">
                       <p className="text-[10px] font-semibold tracking-[0.2em] text-blue-300">
                         {project.category}
                       </p>
+
                       <h3 className="mt-3 text-xl font-bold text-white">
                         {project.title}
                       </h3>
+
                       <p className="mt-3 min-h-[84px] text-sm leading-7 text-slate-400">
                         {project.description}
                       </p>
 
+                      {/* TECHNOLOGIES */}
                       <div className="mt-5 flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
                           <span
@@ -656,10 +755,12 @@ function App() {
                         ))}
                       </div>
 
+                      {/* FOOTER */}
                       <div className="mt-6 flex items-center justify-between border-t border-white/[0.07] pt-4">
                         <span className="text-xs text-slate-500">
                           Academic Project
                         </span>
+
                         <span className="inline-flex items-center gap-2 text-xs font-medium text-blue-300">
                           Project Overview <ArrowUpRight size={14} />
                         </span>
@@ -669,6 +770,12 @@ function App() {
                 )
               })}
             </div>
+
+            {/* SLIDER INDICATOR */}
+            <p className="mt-3 text-center text-xs tracking-wide text-slate-500">
+              SCROLL OR SWIPE TO EXPLORE PROJECTS
+              <span className="ml-2 text-blue-400">→</span>
+            </p>
           </div>
         </section>
 

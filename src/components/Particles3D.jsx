@@ -51,17 +51,14 @@ export default function Particles3D() {
             "position",
             new THREE.BufferAttribute(positions, 3)
         );
-
         geometry.setAttribute(
             "aSize",
             new THREE.BufferAttribute(sizes, 1)
         );
-
         geometry.setAttribute(
             "aPhase",
             new THREE.BufferAttribute(phases, 1)
         );
-
         geometry.setAttribute(
             "aOpacity",
             new THREE.BufferAttribute(opacities, 1)
@@ -119,7 +116,6 @@ export default function Particles3D() {
 
                 void main() {
                     vec2 uv = gl_PointCoord - vec2(0.5);
-
                     float d = length(uv);
 
                     float glow = exp(-d * 10.0);
@@ -144,7 +140,7 @@ export default function Particles3D() {
         const particles = new THREE.Points(geometry, material);
         scene.add(particles);
 
-        // SUBTLE NETWORK CONNECTIONS
+        // NETWORK CONNECTIONS
         const connections = [];
 
         for (let i = 0; i < count; i++) {
@@ -161,10 +157,7 @@ export default function Particles3D() {
             }
         }
 
-        const linePositions = new Float32Array(
-            connections.length * 6
-        );
-
+        const linePositions = new Float32Array(connections.length * 6);
         const lineGeometry = new THREE.BufferGeometry();
 
         lineGeometry.setAttribute(
@@ -200,14 +193,15 @@ export default function Particles3D() {
 
         window.addEventListener("mousemove", handleMouseMove);
 
-        // ANIMATION
-        const clock = new THREE.Clock();
+        // ANIMATION - THREE TIMER
+        const timer = new THREE.Timer();
         let animationId;
 
         const animate = () => {
             animationId = requestAnimationFrame(animate);
 
-            const time = clock.getElapsedTime();
+            timer.update();
+            const time = timer.getElapsed();
 
             material.uniforms.uTime.value = time;
 
@@ -217,8 +211,7 @@ export default function Particles3D() {
             particles.rotation.y = time * 0.008 + mouseX;
             particles.rotation.x = time * 0.004 + mouseY;
 
-            const currentPositions =
-                geometry.attributes.position.array;
+            const currentPositions = geometry.attributes.position.array;
 
             for (let i = 0; i < count; i++) {
                 const index = i * 3;
@@ -233,7 +226,7 @@ export default function Particles3D() {
 
             geometry.attributes.position.needsUpdate = true;
 
-            // Update network lines
+            // UPDATE NETWORK LINES
             const lineArray = lineGeometry.attributes.position.array;
 
             connections.forEach(([a, b], index) => {
@@ -258,6 +251,8 @@ export default function Particles3D() {
             const width = container.clientWidth;
             const height = container.clientHeight;
 
+            if (!width || !height) return;
+
             camera.aspect = width / height;
             camera.updateProjectionMatrix();
 
@@ -275,6 +270,8 @@ export default function Particles3D() {
         // CLEANUP
         return () => {
             cancelAnimationFrame(animationId);
+
+            timer.dispose();
 
             window.removeEventListener("mousemove", handleMouseMove);
             window.removeEventListener("resize", handleResize);
