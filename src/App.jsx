@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Particles3D from './components/Particles3D';
 
 import {
@@ -27,6 +27,8 @@ import {
   Sparkles,
   Terminal,
   X,
+  Volume2,
+  VolumeX,
 } from 'lucide-react';
 
 const projects = [
@@ -119,13 +121,57 @@ function SectionHeading({ label, title, description }) {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [copied, setCopied] = useState(false)
-  // Cursor spotlight + smooth page progress for a more immersive experience.
-  const pointerX = useSpring(useMotionValue(-500), { stiffness: 90, damping: 22, mass: 0.25 })
-  const pointerY = useSpring(useMotionValue(-500), { stiffness: 90, damping: 22, mass: 0.25 })
-  const { scrollYProgress } = useScroll()
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 28, mass: 0.2 })
 
-  // Ganti dengan alamat email kamu yang benar.
+  // Music player
+  const audioRef = useRef(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.3
+    }
+  }, [])
+
+  async function startMusic() {
+    if (!audioRef.current) return
+
+    try {
+      await audioRef.current.play()
+      setIsPlaying(true)
+    } catch (error) {
+      console.log('Musik belum dapat diputar:', error)
+    }
+  }
+
+  async function toggleMusic() {
+    if (!audioRef.current) return
+
+    if (audioRef.current.paused) {
+      await startMusic()
+    } else {
+      audioRef.current.pause()
+      setIsPlaying(false)
+    }
+  }
+
+  // Cursor spotlight + smooth page progress
+  const pointerX = useSpring(
+    useMotionValue(-500),
+    { stiffness: 90, damping: 22, mass: 0.25 }
+  )
+
+  const pointerY = useSpring(
+    useMotionValue(-500),
+    { stiffness: 90, damping: 22, mass: 0.25 }
+  )
+
+  const { scrollYProgress } = useScroll()
+
+  const smoothProgress = useSpring(
+    scrollYProgress,
+    { stiffness: 100, damping: 28, mass: 0.2 }
+  )
+
   const email = 'deansptaa@gmail.com'
 
   const navigation = [
@@ -148,48 +194,59 @@ function App() {
     }
   }
 
-  return (
-    <div
-      className="site-shell relative min-h-screen overflow-hidden bg-[#050816] text-slate-200"
-      onMouseMove={(event) => { pointerX.set(event.clientX); pointerY.set(event.clientY) }}
-    >
-      {/* Cinematic scroll progress */}
-      <motion.div className="fixed inset-x-0 top-0 z-[100] h-[3px] origin-left bg-gradient-to-r from-blue-500 via-cyan-300 to-violet-400 shadow-[0_0_18px_rgba(34,211,238,0.8)]" style={{ scaleX: smoothProgress }} />
-      {/* Cursor-following ambient spotlight (automatically subtle on touch devices) */}
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none fixed z-[2] hidden h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/[0.055] blur-[75px] md:block"
-        style={{ left: pointerX, top: pointerY }}
-      />
-      {/* 3D Depth Particles */}
-      <Particles3D />
 
-      {/* Background */}
-      <div className="grid-background pointer-events-none fixed inset-0" />
-      <div className="ambient-glow ambient-glow-one pointer-events-none fixed" />
-      <div className="ambient-glow ambient-glow-two pointer-events-none fixed" />
-      {/* Animated atmosphere */}
-      <div className="pointer-events-none fixed inset-0 z-[1] overflow-hidden" aria-hidden="true">
-        <motion.div
-          className="absolute -left-32 top-[18%] h-72 w-72 rounded-full bg-blue-600/10 blur-[100px]"
-          animate={{ x: [0, 70, 0], y: [0, 45, 0], scale: [1, 1.18, 1] }}
-          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
+  return (
+  <div
+    className="site-shell relative min-h-screen overflow-hidden bg-[#050816] text-slate-200"
+    onMouseMove={(event) => { pointerX.set(event.clientX); pointerY.set(event.clientY) }}
+  >
+    <audio
+      ref={audioRef}
+      src="/audio/lathi.mp3"
+      loop
+      preload="auto"
+    />
+
+    {/* Cinematic scroll progress */}
+    <motion.div className="fixed inset-x-0 top-0 z-[100] h-[3px] origin-left bg-gradient-to-r from-blue-500 via-cyan-300 to-violet-400 shadow-[0_0_18px_rgba(34,211,238,0.8)]" style={{ scaleX: smoothProgress }} />
+
+    {/* Cursor-following ambient spotlight */}
+    <motion.div
+      aria-hidden="true"
+      className="pointer-events-none fixed z-[2] hidden h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/[0.055] blur-[75px] md:block"
+      style={{ left: pointerX, top: pointerY }}
+    />
+
+    {/* 3D Depth Particles */}
+    <Particles3D />
+
+    {/* Background */}
+    <div className="grid-background pointer-events-none fixed inset-0" />
+    <div className="ambient-glow ambient-glow-one pointer-events-none fixed" />
+    <div className="ambient-glow ambient-glow-two pointer-events-none fixed" />
+
+    {/* Animated atmosphere */}
+    <div className="pointer-events-none fixed inset-0 z-[1] overflow-hidden" aria-hidden="true">
+      <motion.div
+        className="absolute -left-32 top-[18%] h-72 w-72 rounded-full bg-blue-600/10 blur-[100px]"
+        animate={{ x: [0, 70, 0], y: [0, 45, 0], scale: [1, 1.18, 1] }}
+        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute -right-28 top-[48%] h-80 w-80 rounded-full bg-cyan-500/10 blur-[110px]"
+        animate={{ x: [0, -55, 0], y: [0, -60, 0], scale: [1, 1.12, 1] }}
+        transition={{ duration: 17, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      {Array.from({ length: 18 }, (_, i) => (
+        <motion.span
+          key={i}
+          className="absolute h-1 w-1 rounded-full bg-cyan-200/60 shadow-[0_0_12px_rgba(103,232,249,0.7)]"
+          style={{ left: `${(i * 37 + 11) % 100}%`, top: `${(i * 23 + 7) % 100}%` }}
+          animate={{ y: [0, -18 - (i % 4) * 7, 0], opacity: [0.15, 0.8, 0.15], scale: [0.7, 1.25, 0.7] }}
+          transition={{ duration: 3 + (i % 5), delay: i * 0.17, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <motion.div
-          className="absolute -right-28 top-[48%] h-80 w-80 rounded-full bg-cyan-500/10 blur-[110px]"
-          animate={{ x: [0, -55, 0], y: [0, -60, 0], scale: [1, 1.12, 1] }}
-          transition={{ duration: 17, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        {Array.from({ length: 18 }, (_, i) => (
-          <motion.span
-            key={i}
-            className="absolute h-1 w-1 rounded-full bg-cyan-200/60 shadow-[0_0_12px_rgba(103,232,249,0.7)]"
-            style={{ left: `${(i * 37 + 11) % 100}%`, top: `${(i * 23 + 7) % 100}%` }}
-            animate={{ y: [0, -18 - (i % 4) * 7, 0], opacity: [0.15, 0.8, 0.15], scale: [0.7, 1.25, 0.7] }}
-            transition={{ duration: 3 + (i % 5), delay: i * 0.17, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        ))}
-      </div>
+      ))}
+    </div>
 
       {/* ULTRA PREMIUM NAVBAR */}
       <motion.header
@@ -1212,6 +1269,15 @@ function App() {
           </div>
         </div>
       </footer>
+      <button
+        type="button"
+        onClick={toggleMusic}
+        aria-label={isPlaying ? "Pause music" : "Play music"}
+        title={isPlaying ? "Pause music" : "Play music"}
+        className="fixed bottom-6 right-6 z-[100] flex h-12 w-12 items-center justify-center rounded-full border border-cyan-400/30 bg-[#0a1022]/90 text-cyan-300 shadow-lg backdrop-blur-xl transition hover:scale-110"
+      >
+        {isPlaying ? <Volume2 size={21} /> : <VolumeX size={21} />}
+      </button>
     </div>
   )
 }
