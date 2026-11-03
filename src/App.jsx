@@ -129,13 +129,6 @@ function App() {
   useEffect(() => {
   if (audioRef.current) {
     audioRef.current.volume = 0.15
-
-    audioRef.current.play()
-      .then(() => setIsPlaying(true))
-      .catch(() => {
-        setIsPlaying(false)
-        console.log('Autoplay diblokir oleh browser.')
-      })
   }
 }, [])
 
